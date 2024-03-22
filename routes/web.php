@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentHomesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,15 +24,17 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware('Employee')->group(function () {
-        Route::get('/employee', function () {
-            return view('management.dashboard');
-        })->name('employee.dashboard');
+        Route::get('/createhome', [StudentHomesController::class, 'create'])->name('studenthomes.create');
+        Route::post('/storehome', [StudentHomesController::class, 'store'])->name('studenthomes.store');
+        Route::get('/edithome/{studenthome}', [StudentHomesController::class, 'edit'])->name('studenthomes.edit');
+        Route::patch('/updatehome/{studenthome}', [StudentHomesController::class, 'update'])->name('studenthomes.update');
     });
 
     Route::middleware('User')->group(function () {
         Route::get('/user', function () {
             return view('user.dashboard');
         })->name('user.dashboard');
+        Route::get('/studenthomes', [StudentHomesController::class, 'index'])->name('studenthomes.index');
     });
 });
 
