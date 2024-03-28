@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
-                <div class="grid grid-rows-2">
+                <div class="flex gap-4 flex-wrap">
                     @foreach ($studenthomes as $studenthome)
                     <x-homecard image="{{ $studenthome->image }}" alt="{{ $studenthome->name }}"
                         title="{{ $studenthome->description }}"
