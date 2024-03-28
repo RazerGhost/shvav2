@@ -4,9 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentHomesController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [StudentHomesController::class, 'index'])->name('studenthomes.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -34,7 +32,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/user', function () {
             return view('user.dashboard');
         })->name('user.dashboard');
-        Route::get('/studenthomes', [StudentHomesController::class, 'index'])->name('studenthomes.index');
     });
 });
 
