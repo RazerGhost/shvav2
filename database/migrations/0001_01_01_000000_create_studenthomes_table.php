@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('student_homes', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
             $table->string('address');
             $table->string('city');
             $table->string('state');

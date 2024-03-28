@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Employee
+class Provider
 {
     /**
      * Handle an incoming request.
@@ -15,12 +15,12 @@ class Employee
      */
     public function handle(Request $request, Closure $next): Response
     {
+
         $auth = auth()->user()->role;
 
-        if ($auth != 1 && $auth != 0) {
+        if ($auth != 3 && $auth != 2 && $auth != 1 && $auth != 0) {
             return response()->json('Oops! You do not have permission to access.');
         }
-
         return $next($request);
     }
 }

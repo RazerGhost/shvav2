@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a href="{{ route('studenthomes.index') }}">
+                    <a href="{{ route('studenthomes.homes') }}">
                         <x-application-logo class="block w-auto text-gray-800 fill-current h-9 dark:text-gray-200" />
                     </a>
                 </div>
@@ -13,7 +13,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:ml-10 sm:flex sm:items-center">
 
-                    <x-nav-link :href="route('studenthomes.index')" :active="request()->routeIs('studenthomes.index')">
+                    <x-nav-link :href="route('studenthomes.homes')" :active="request()->routeIs('studenthomes.homes')">
                         {{ __('View Student Homes') }}
                     </x-nav-link>
                     @if (Auth::check() && (Auth::user()->role == 1 || Auth::user()->role == 0))
@@ -69,7 +69,7 @@
                 @if (Route::has('login'))
                     <nav class="flex justify-end flex-1 -mx-3">
                         @auth
-                            <a href="{{ url('studenthomes.index') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                            <a href="{{ url('studenthomes.homes') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
                                 Dashboard
                             </a>
                         @else
@@ -102,7 +102,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('studenthomes.index')" :active="request()->routeIs('studenthomes.index')">
+            <x-responsive-nav-link :href="route('studenthomes.homes')" :active="request()->routeIs('studenthomes.homes')">
                 {{ __('View Student Homes') }}
             </x-responsive-nav-link>
             @if (Auth::check() && (Auth::user()->role == 1 || Auth::user()->role == 0))

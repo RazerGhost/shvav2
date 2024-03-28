@@ -10,8 +10,8 @@
             <div class="grid grid-cols-1 gap-4 justify-evenly sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 @foreach ($studenthomes as $studenthome)
                     <div class="flex flex-col justify-center flex-1 w-full bg-white rounded-md shadow-md">
-                        <x-homecard image="{{ $studenthome->image }}" alt="{{ $studenthome->name }}" title="{{ $studenthome->description }}" address="{{ $studenthome->address }}" city="{{ $studenthome->city }}" state="{{ $studenthome->state }}" zip="{{ $studenthome->zip }}" />
-                        <div class="flex flex-row flex-1 p-4">
+                        <x-homecard image="{{ $studenthome->image }}" alt="{{ $studenthome->name }}" title="{{ $studenthome->name }}" description="{{ $studenthome->description }}" address="{{ $studenthome->address }}" city="{{ $studenthome->city }}" state="{{ $studenthome->state }}" zip="{{ $studenthome->zip }}" />
+                        <div class="flex flex-row justify-between flex-1 p-4">
                             <button class="w-full mt-4">
                                 <a href="{{ route('studenthomes.view', $studenthome->id) }}">
                                     {{ __('View') }}
@@ -23,6 +23,13 @@
                                         {{ __('Edit') }}
                                     </a>
                                 </button>
+                                <form method="POST" class="flex justify-center w-full mt-4" action="{{ route('studenthomes.destroy', $studenthome->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button>
+                                        {{ __('Delete') }}
+                                    </button>
+                                </form>
                             @endif
                         </div>
                     </div>
