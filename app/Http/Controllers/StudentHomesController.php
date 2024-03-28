@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Storage;
 use App\Models\StudentHomes;
 use Illuminate\Http\Request;
 
@@ -25,8 +26,11 @@ class StudentHomesController extends Controller
             'state' => 'required',
             'zip' => 'required',
             'description' => 'required',
-            'image' => 'required',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
         ]);
+
+        $path = $request->file('image')->store('public/images');
+        $url = Storage::url($path); // Generate a URL for the stored file
 
         StudentHomes::create([
             'address' => $request->address,
@@ -34,7 +38,7 @@ class StudentHomesController extends Controller
             'state' => $request->state,
             'zip' => $request->zip,
             'description' => $request->description,
-            'image' => $request->image,
+            'image' => $url,
         ]);
 
         return redirect('/studenthomes')->with('success', 'Student Home saved!');

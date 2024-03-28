@@ -11,7 +11,7 @@
                 {{-- Input form --}}
 
                 <div class="p-6">
-                    <form action="{{ route('studenthomes.store') }}" method="POST">
+                    <form action="{{ route('studenthomes.store') }}" enctype="multipart/form-data" method="POST">
                         @csrf
                         {{-- image --}}
 
