@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use Storage;
 use App\Models\StudentHomes;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 
 class StudentHomesController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         return view('studenthomes.index')->with('studenthomes', StudentHomes::all());
     }
 
-    public function view(StudentHomes $id)
+    public function view(StudentHomes $id): View
     {
         $studenthome = StudentHomes::where('id', $id);
 
@@ -51,7 +52,7 @@ class StudentHomesController extends Controller
         return redirect('/')->with('success', 'Student Home saved!');
     }
 
-    public function edit(StudentHomes $studenthome)
+    public function edit(StudentHomes $studenthome): View
     {
         return view('studenthomes.edit')->with('studenthome', $studenthome);
     }
@@ -59,20 +60,16 @@ class StudentHomesController extends Controller
     public function update(Request $request, StudentHomes $studenthome)
     {
         $request->validate([
-            'address' => 'required',
-            'city' => 'required',
-            'state' => 'required',
-            'zip' => 'required',
-            'description' => 'required',
-            'image' => 'required',
+            'address' => 'min:5|max:255',
+            'city' => 'min:5|max:255',
+            'state' => 'min:5|max:255',
+            'zip' => 'min:5|max:255',
+            'description' => 'min:5|max:255',
+            'image' => '',
         ]);
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $name = time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/assets/images');
-            $image->move($destinationPath, $name);
-        }
+        $path = $request->file('image')->store('public/images');
+        $url = Storage::url($path); // Generate a URL for the stored file
 
         $studenthome->update([
             'address' => $request->address,
@@ -80,7 +77,7 @@ class StudentHomesController extends Controller
             'state' => $request->state,
             'zip' => $request->zip,
             'description' => $request->description,
-            'image' => $name,
+            'image' => $url,
         ]);
 
         return redirect('/')->with('success', 'Student Home updated!');

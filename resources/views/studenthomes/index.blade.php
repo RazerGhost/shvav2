@@ -11,11 +11,20 @@
                 @foreach ($studenthomes as $studenthome)
                     <div class="flex flex-col justify-center flex-1 w-full bg-white rounded-md shadow-md">
                         <x-homecard image="{{ $studenthome->image }}" alt="{{ $studenthome->name }}" title="{{ $studenthome->description }}" address="{{ $studenthome->address }}" city="{{ $studenthome->city }}" state="{{ $studenthome->state }}" zip="{{ $studenthome->zip }}" />
-                        <button class="w-full mt-4">
-                            <a href="{{ route('studenthomes.view', $studenthome->id) }}">
-                                {{ __('View') }}
-                            </a>
-                        </button>
+                        <div class="flex flex-row flex-1 p-4">
+                            <button class="w-full mt-4">
+                                <a href="{{ route('studenthomes.view', $studenthome->id) }}">
+                                    {{ __('View') }}
+                                </a>
+                            </button>
+                            @if (Auth::user()->role == 1 || Auth::user()->role == 0)
+                                <button class="w-full mt-4">
+                                    <a href="{{ route('studenthomes.edit', $studenthome->id) }}">
+                                        {{ __('Edit') }}
+                                    </a>
+                                </button>
+                            @endif
+                        </div>
                     </div>
                 @endforeach
             </div>
