@@ -7,14 +7,17 @@
 
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
-                <div class="flex flex-wrap gap-4 p-4">
-                    @foreach ($studenthomes as $studenthome)
-                    <x-homecard image="{{ $studenthome->image }}" alt="{{ $studenthome->name }}"
-                        title="{{ $studenthome->description }}"
-                        content="{{ $studenthome->address }}, {{ $studenthome->city }}, {{ $studenthome->state }}, {{ $studenthome->zip }}" />
-                    @endforeach
-                </div>
+            <div class="grid grid-cols-1 gap-4 justify-evenly sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                @foreach ($studenthomes as $studenthome)
+                    <div class="flex flex-col justify-center flex-1 w-full bg-white rounded-md shadow-md">
+                        <x-homecard image="{{ $studenthome->image }}" alt="{{ $studenthome->name }}" title="{{ $studenthome->description }}" address="{{ $studenthome->address }}" city="{{ $studenthome->city }}" state="{{ $studenthome->state }}" zip="{{ $studenthome->zip }}" />
+                        <button class="w-full mt-4">
+                            <a href="{{ route('studenthomes.view', $studenthome->id) }}">
+                                {{ __('View') }}
+                            </a>
+                        </button>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

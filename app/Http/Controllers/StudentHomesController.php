@@ -13,6 +13,13 @@ class StudentHomesController extends Controller
         return view('studenthomes.index')->with('studenthomes', StudentHomes::all());
     }
 
+    public function view(StudentHomes $id)
+    {
+        $studenthome = StudentHomes::where('id', $id);
+
+        return view('studenthomes.view')->with('studenthome', $studenthome);
+    }
+
     public function create()
     {
         return view('studenthomes.create');
@@ -41,7 +48,7 @@ class StudentHomesController extends Controller
             'image' => $url,
         ]);
 
-        return redirect('/studenthomes')->with('success', 'Student Home saved!');
+        return redirect('/')->with('success', 'Student Home saved!');
     }
 
     public function edit(StudentHomes $studenthome)
@@ -76,6 +83,6 @@ class StudentHomesController extends Controller
             'image' => $name,
         ]);
 
-        return redirect('/studenthomes')->with('success', 'Student Home updated!');
+        return redirect('/')->with('success', 'Student Home updated!');
     }
 }

@@ -1,11 +1,12 @@
-<div class="flex justify-center">
-    <div class="p-6 bg-white rounded-md shadow-md">
-        <div class="justify-center h-48 mb-4 overflow-hidden rounded-md w-96">
-            <img src="{{ $image }}" alt="{{ $alt }}" class="object-cover w-full h-full" />
-        </div>
-        <div>
-            <h1 class="mb-2 text-xl font-semibold">{{ $title }}</h1>
-            <p class="text-gray-600">{{ $content }}</p>
-        </div>
+<div class="w-full p-6 bg-white"> <!-- Adjusted width to w-80 -->
+    <div class="justify-center h-48 mb-4 overflow-hidden rounded-md"> <!-- Maintain height -->
+        <img src="{{ $image }}" alt="{{ $alt }}" class="object-cover w-full h-full" />
+    </div>
+    <div>
+        <h1 class="mb-2 text-xl font-semibold">{{ $title }}</h1>
+        <p class="text-gray-600"> Adres: {{ $address }}</p>
+        <p class="text-gray-600"> Stad: {{ $city }}</p>
+        <p class="text-gray-600"> Provincie: {{ $state }}</p>
+        <p class="text-gray-600">Postcode: {{ $zip }}</p>
     </div>
 </div>

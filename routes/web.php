@@ -5,6 +5,7 @@ use App\Http\Controllers\StudentHomesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [StudentHomesController::class, 'index'])->name('studenthomes.index');
+Route::get('/home/{studenthome}', [StudentHomesController::class, 'view'])->name('studenthomes.view');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
