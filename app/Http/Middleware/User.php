@@ -18,8 +18,8 @@ class User
 
         $auth = auth()->user()->role;
 
-        if ($auth != 2 && $auth != 1 && $auth != 0) {
-            return response()->json('Opps! You do not have permission to access.');
+        if ($auth != 3 && $auth != 2 && $auth != 1 && $auth != 0) {
+            return response()->json('Oops! You do not have permission to access.');
         }
         return $next($request);
     }

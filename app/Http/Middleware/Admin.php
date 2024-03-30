@@ -18,7 +18,7 @@ class Admin
         $auth = auth()->user()->role;
 
         if ($auth != 0) {
-            return response()->json('Opps! You do not have permission to access.');
+            return response()->json('Oops! You do not have permission to access.');
         }
 
         return $next($request);
