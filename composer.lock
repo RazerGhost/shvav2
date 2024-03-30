@@ -2145,7 +2145,6 @@
                 }
             ],
             "time": "2024-03-30T18:22:00+00:00"
-        },
         {
             "name": "nette/schema",
             "version": "v1.3.0",
@@ -8244,5 +8243,5 @@
         "php": "^8.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
