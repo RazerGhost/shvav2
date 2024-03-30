@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('zip')->nullable();
             $table->string('password');
             $table->integer('role')->default(2);
-            $table->foreignId('home_id')->nullable()->index()->references('id')->on('student_homes');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
@@ -43,6 +42,10 @@ return new class extends Migration
             $table->text('user_agent')->nullable();
             $table->longText('payload');
             $table->integer('last_activity')->index();
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreignId('home_id')->nullable()->constrained('student_homes', 'provider_id');
         });
     }
 

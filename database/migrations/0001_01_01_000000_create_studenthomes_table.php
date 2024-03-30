@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('zip');
             $table->string('description');
             $table->string('image');
+            $table->unsignedBigInteger('provider_id')->nullable()->index();
             $table->timestamps();
         });
     }

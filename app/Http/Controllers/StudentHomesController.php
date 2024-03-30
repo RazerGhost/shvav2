@@ -15,11 +15,11 @@ class StudentHomesController extends Controller
         return view('studenthomes.homes')->with('studenthomes', StudentHomes::all());
     }
 
-    public function view(StudentHomes $id): View
+    public function home($id): View
     {
-        $studenthome = StudentHomes::where('id', $id);
-
-        return view('studenthomes.view')->with('studenthome', $studenthome);
+        $home = StudentHomes::find($id);
+        //dd($home);
+        return view('studenthomes.home')->with('studenthome', $home);
     }
 
     public function create()
@@ -30,11 +30,11 @@ class StudentHomesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'state' => 'required',
-            'zip' => 'required',
+            'name' => 'required|min:5|max:255',
+            'address' => 'required|min:5|max:255',
+            'city' => 'required|min:5|max:255',
+            'state' => 'required|min:5|max:255',
+            'zip' => 'required|min:5|max:255',
             'description' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
         ]);
@@ -63,13 +63,13 @@ class StudentHomesController extends Controller
     public function update(Request $request, StudentHomes $studenthome)
     {
         $request->validate([
-            'name' => 'min:5|max:255',
-            'address' => 'min:5|max:255',
-            'city' => 'min:5|max:255',
-            'state' => 'min:5|max:255',
-            'zip' => 'min:5|max:255',
-            'description' => 'min:5|max:255',
-            'image' => '',
+            'name' => 'required|min:5|max:255',
+            'address' => 'required|min:5|max:255',
+            'city' => 'required|min:5|max:255',
+            'state' => 'required|min:5|max:255',
+            'zip' => 'required|min:5|max:255',
+            'description' => 'required',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
         ]);
 
         $path = $request->file('image')->store('public/images');

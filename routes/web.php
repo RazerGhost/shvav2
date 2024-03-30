@@ -5,7 +5,7 @@ use App\Http\Controllers\StudentHomesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [StudentHomesController::class, 'homes'])->name('studenthomes.homes');
-Route::get('/home/{studenthome}', [StudentHomesController::class, 'view'])->name('studenthomes.view');
+Route::get('/home/{studenthome}', [StudentHomesController::class, 'home'])->name('studenthomes.home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    //Routes for Admins to view the dashboard
     Route::middleware('Admin')->group(function () {
         Route::get('/admin', function () {
             return view('admin.dashboard');
