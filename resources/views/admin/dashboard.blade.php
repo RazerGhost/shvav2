@@ -92,6 +92,9 @@
                             </div>
                         </x-bladewind::tab-content>
                         <x-bladewind::tab-content name="employees">
+                            <x-primary-button class="p-6 text-gray-900 dark:text-gray-100 x-p">
+                                <a href="{{ route('admin.createemployee') }}">Add Employee</a>
+                            </x-primary-button>
                             <div class="p-6">
                                 <x-bladewind::table>
                                     <x-slot name="header">
