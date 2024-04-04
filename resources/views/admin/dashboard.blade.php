@@ -49,10 +49,10 @@
                                             <td>{{ $student->homeid }}</td>
                                             <td>
                                                 <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                    <a href="{{ route('admin.edituser', ['user' = $student->id]) }}">Edit</a>
+                                                    <a href="{{ route('admin.edituser', $student->id) }}">Edit</a>
                                                 </x-primary-button>
                                                 <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                    <a href="{{ route('admin.deleteuser', ['user' = $student->id]) }}">Delete</a>
+                                                    <a href="{{ route('admin.deleteuser', $student->id) }}">Delete</a>
                                                 </x-primary-button>
                                             </td>
                                         </tr>
@@ -87,10 +87,10 @@
                                             <td>{{ $provider->zip }}</td>
                                             <td>
                                                 <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                    <a href="{{ route('admin.edituser', ['user' = $provider->id]) }}">Edit</a>
+                                                    <a href="{{ route('admin.edituser', $provider->id) }}">Edit</a>
                                                 </x-primary-button>
                                                 <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                    <a href="{{ route('admin.deleteuser', ['user' = $provider->id]) }}">Delete</a>
+                                                    <a href="{{ route('admin.deleteuser', $provider->id) }}">Delete</a>
                                                 </x-primary-button>
                                             </td>
                                         </tr>
@@ -127,10 +127,10 @@
                                             <td>{{ $employee->zip }}</td>
                                             <td>
                                                 <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                    <a href="{{ route('admin.edituser', ['user' = $employee->id]) }}">Edit</a>
+                                                    <a href="{{ route('admin.edituser', $employee->id) }}">Edit</a>
                                                 </x-primary-button>
                                                 <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                    <a href="{{ route('admin.deleteuser', ['user' = $employee->id]) }}">Delete</a>
+                                                    <a href="{{ route('admin.deleteuser', $employee->id) }}">Delete</a>
                                                 </x-primary-button>
                                             </td>
                                         </tr>
