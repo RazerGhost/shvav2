@@ -19,7 +19,7 @@
                     <x-bladewind::tab-body>
                         <x-bladewind::tab-content name="students" active="true">
                             <x-primary-button class="p-6 text-gray-900 x-p dark:text-gray-100">
-                                <a href="{{ route('employee.createuser', ['role' => 2]) }}">Add Student</a>
+                                <a href="{{ route('employee.createuser', ['role' => 2]) }}">Student Toevoegen</a>
                             </x-primary-button>
                             <div class="p-6 overflow-scroll">
                                 <x-bladewind::table>
@@ -47,16 +47,16 @@
                                             <td>{{ $student->zip }}</td>
                                             <td>{{ $student->homeid }}</td>
                                             <td>
-                                                <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                    <a href="{{ route('employee.edituser', $student->id) }}">Edit</a>
-                                                </x-primary-button>
-                                                <form method="POST" class="flex justify-center w-full mt-4" action="{{ route('employee.deleteuser', $student->id) }}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                        {{ __('Verwijderen') }}
-                                                    </x-primary-button>
-                                                </form>
+                                                <div class="flex flex-row justify-center flex-1">
+                                                    <a href="{{ route('employee.edituser', $student->id) }}"><x-pen></x-pen></a>
+                                                    <form method="POST" action="{{ route('employee.deleteuser', $student->id) }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button>
+                                                            <x-trash></x-trash>
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -65,7 +65,7 @@
                         </x-bladewind::tab-content>
                         <x-bladewind::tab-content name="providers">
                             <x-primary-button class="p-6 text-gray-900 x-p dark:text-gray-100">
-                                <a href="{{ route('employee.createuser', ['role' => 3]) }}">Add Provider</a>
+                                <a href="{{ route('employee.createuser', ['role' => 3]) }}">Bedrijf Toevoegen</a>
                             </x-primary-button>
                             <div class="p-6 overflow-scroll">
                                 <x-bladewind::table>
@@ -89,16 +89,16 @@
                                             <td>{{ $provider->state }}</td>
                                             <td>{{ $provider->zip }}</td>
                                             <td>
-                                                <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                    <a href="{{ route('employee.edituser', $provider->id) }}">Edit</a>
-                                                </x-primary-button>
-                                                <form method="POST" class="flex justify-center w-full mt-4" action="{{ route('employee.deleteuser', $provider->id) }}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                        {{ __('Verwijderen') }}
-                                                    </x-primary-button>
-                                                </form>
+                                                <div class="flex flex-row justify-center flex-1">
+                                                    <a href="{{ route('employee.edituser', $provider->id) }}"><x-pen></x-pen></a>
+                                                    <form method="POST" action="{{ route('employee.deleteuser', $provider->id) }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button>
+                                                            <x-trash></x-trash>
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -108,7 +108,7 @@
                         @if (Auth::user()->role === 0)
                             <x-bladewind::tab-content name="employees">
                                 <x-primary-button class="p-6 text-gray-900 x-p dark:text-gray-100">
-                                    <a href="{{ route('employee.createuser', ['role' => 1]) }}">Add Employee</a>
+                                    <a href="{{ route('employee.createuser', ['role' => 1]) }}">Werknemer Toevoegen</a>
                                 </x-primary-button>
                                 <div class="p-6 overflow-scroll">
                                     <x-bladewind::table>
@@ -134,16 +134,16 @@
                                                 <td>{{ $employee->state }}</td>
                                                 <td>{{ $employee->zip }}</td>
                                                 <td>
-                                                    <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                        <a href="{{ route('employee.edituser', $employee->id) }}">Edit</a>
-                                                    </x-primary-button>
-                                                    <form method="POST" class="flex justify-center w-full mt-4" action="{{ route('employee.deleteuser', $employee->id) }}">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                            {{ __('Verwijderen') }}
-                                                        </x-primary-button>
-                                                    </form>
+                                                    <div class="flex flex-row justify-center flex-1">
+                                                        <a href="{{ route('employee.edituser', $employee->id) }}"><x-pen></x-pen></a>
+                                                        <form method="POST" action="{{ route('employee.deleteuser', $employee->id) }}">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button>
+                                                                <x-trash></x-trash>
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
