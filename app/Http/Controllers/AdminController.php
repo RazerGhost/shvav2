@@ -48,7 +48,6 @@ class AdminController extends Controller
             'state' => ['required', 'string', 'max:255'],
             'zip' => ['required', 'string', 'max:255'],
         ]);
-
         User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
