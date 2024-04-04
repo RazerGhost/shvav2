@@ -27,7 +27,7 @@ class StudentHomesController extends Controller
         return view('studenthomes.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, StudentHomes $studenthome)
     {
         $request->validate([
             'name' => 'required|min:5|max:255',
@@ -42,7 +42,7 @@ class StudentHomesController extends Controller
         $path = $request->file('image')->store('public/images');
         $url = Storage::url($path); // Generate a URL for the stored file
 
-        StudentHomes::create([
+        $studenthome->create([
             'name' => $request->name,
             'address' => $request->address,
             'city' => $request->city,
