@@ -84,7 +84,7 @@
                     </div>
 
                     <!-- Role -->
-                    <x-text-input class="hidden" type="text" name="role" id="role" value="1" />
+                    <x-text-input class="hidden" type="text" name="role" id="role" value="{{ request()->query('role') }}" />
 
                     <div class="flex items-center justify-end mb-4">
                         <x-primary-button class="ms-4">

@@ -19,6 +19,9 @@
                     </x-slot:headings>
                     <x-bladewind::tab-body>
                         <x-bladewind::tab-content name="students" active="true">
+                            <x-primary-button class="p-6 text-gray-900 x-p dark:text-gray-100">
+                                <a href="{{ route('admin.createuser', ['role' => 2]) }}">Add Student</a>
+                            </x-primary-button>
                             <div class="p-6 overflow-scroll">
                                 <x-bladewind::table>
                                     <x-slot name="header">
@@ -58,6 +61,9 @@
                             </div>
                         </x-bladewind::tab-content>
                         <x-bladewind::tab-content name="providers">
+                            <x-primary-button class="p-6 text-gray-900 x-p dark:text-gray-100">
+                                <a href="{{ route('admin.createuser', ['role' => 3]) }}">Add Provider</a>
+                            </x-primary-button>
                             <div class="p-6 overflow-scroll">
                                 <x-bladewind::table>
                                     <x-slot name="header">
@@ -94,7 +100,7 @@
                         </x-bladewind::tab-content>
                         <x-bladewind::tab-content name="employees">
                             <x-primary-button class="p-6 text-gray-900 x-p dark:text-gray-100">
-                                <a href="{{ route('admin.createuser') }}">Add Employee</a>
+                                <a href="{{ route('admin.createuser', ['role' => 1]) }}">Add Employee</a>
                             </x-primary-button>
                             <div class="p-6 overflow-scroll">
                                 <x-bladewind::table>
