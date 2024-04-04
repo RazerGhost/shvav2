@@ -9,5 +9,6 @@
         <p class="text-gray-600"> Stad: {{ $city }}</p>
         <p class="text-gray-600"> Provincie: {{ $state }}</p>
         <p class="text-gray-600">Postcode: {{ $zip }}</p>
+        <p class="text-gray-600">Aangeboden door: {{ $provider }}</p>
     </div>
 </div>

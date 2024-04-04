@@ -10,9 +10,21 @@ use Illuminate\Http\Request;
 
 class StudentHomesController extends Controller
 {
-    public function homes(): View
+    public function homes(StudentHomes $studentHomes): View
     {
-        return view('studenthomes.homes')->with('studenthomes', StudentHomes::all());
+        $homes = $studentHomes->all();
+        $providersPerHome = [];
+
+        // Iterate over each student home to fetch its associated provider
+        foreach ($homes as $home) {
+            $provider = User::find($home->provider_id);
+            if ($provider) {
+                // Store the provider in the array using the home's ID as the key
+                $providersPerHome[$home->id] = $provider->name; // Assuming provider has a 'name' attribute
+            }
+        }
+
+        return view('studenthomes.homes', compact('homes', 'providersPerHome'));
     }
 
     public function home($id): View
@@ -28,12 +40,14 @@ class StudentHomesController extends Controller
         $providerlist = [];
         foreach ($providers as $provider) {
             $providerlist[] = [
-                'value' => $provider->id,
+                'id' => $provider->id,
                 'name' => $provider->name,
             ];
         }
 
-        dd($providerlist);
+        if (count($providerlist) == 0) {
+            return redirect('/')->with('error', 'No providers found!');
+        }
         return view('studenthomes.create')->with('providers', $providerlist);
     }
 
@@ -47,6 +61,7 @@ class StudentHomesController extends Controller
             'zip' => 'required|min:5|max:255',
             'description' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
+            'provider_id' => 'required|integer',
         ]);
 
         $path = $request->file('image')->store('public/images');
@@ -60,6 +75,7 @@ class StudentHomesController extends Controller
             'zip' => $request->zip,
             'description' => $request->description,
             'image' => $url,
+            'provider_id' => $request->provider_id,
         ]);
 
         return redirect('/')->with('success', 'Student Home saved!');

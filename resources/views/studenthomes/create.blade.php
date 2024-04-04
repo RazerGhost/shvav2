@@ -21,6 +21,11 @@
                                 <div class="w-full mb-3">
                                     <img id="image-preview" src="https://cdn.dribbble.com/users/4438388/screenshots/15854247/media/0cd6be830e32f80192d496e50cfa9dbc.jpg?resize=1000x750&vertical=center" alt="preview image">
                                 </div>
+
+                                {{-- provider --}}
+                                <di class="h-auto overflow-scroll ">
+                                    <x-bladewind::dropdown name="provider_id" placeholder="Selecteer het Bedrijf" :data="$providers" label_key="name" value_key="id" required />
+                                </di>
                             </div>
                             <div class="flex flex-col w-1/2">
                                 {{-- name --}}
@@ -53,9 +58,6 @@
                                     <label for="zip" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Postcode</label>
                                     <input type="text" name="zip" id="zip" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300" required>
                                 </div>
-
-                                {{-- provider --}}
-                                <x-bladewind::dropdown name="provider_id" placeholder="Selecteer het Bedrijf"
 
                                 <div class="mb-4">
                                     <x-primary-button type="submit" class="w-full p-2 text-white bg-blue-500 rounded-md">Verzenden</x-primary-button>

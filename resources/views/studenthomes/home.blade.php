@@ -11,14 +11,14 @@
                 <div>
                     <img src="{{ $home->image }}" alt="{{ $home->name }}" class="w-full h-auto">
                 </div>
-                <div>
+                <div class="flex flex-col justify-center flex-1 p-4">
                     <h1 class="text-xl font-semibold leading-tight text-gray-800">{{ $home->name }}</h1>
                     <p class="mt-2 text-gray-600">{{ $home->description }}</p>
-                    <p class="mt-2 text-gray-600"><strong>Address:</strong> {{ $home->address }}</p>
-                    <p class="mt-2 text-gray-600"><strong>City:</strong> {{ $home->city }}</p>
-                    <p class="mt-2 text-gray-600"><strong>State:</strong> {{ $home->state }}</p>
-                    <p class="mt-2 text-gray-600"><strong>Zip Code:</strong> {{ $home->zip }}</p>
-                    <p class="mt-2 text-gray-600"><strong>Provided By:</strong> {{ $provider->name }}</p>
+                    <p class="mt-2 text-gray-600"><strong>Adres:</strong> {{ $home->address }}</p>
+                    <p class="mt-2 text-gray-600"><strong>Stad:</strong> {{ $home->city }}</p>
+                    <p class="mt-2 text-gray-600"><strong>Provincie:</strong> {{ $home->state }}</p>
+                    <p class="mt-2 text-gray-600"><strong>Postcode:</strong> {{ $home->zip }}</p>
+                    <p class="mt-2 text-gray-600"><strong>Aangeboden door:</strong> {{ $provider->name }}</p>
                 </div>
             </div>
         </div>
