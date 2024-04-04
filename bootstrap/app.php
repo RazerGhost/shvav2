@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\Employee;
+use App\Http\Middleware\Provider;
 use App\Http\Middleware\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -18,6 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'Admin' => Admin::class,
             'Employee' => Employee::class,
             'User' => User::class,
+            'Provider' => Provider::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

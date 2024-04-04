@@ -32,12 +32,14 @@ Route::middleware('auth')->group(function () {
         Route::delete('/deletehome/{studenthome}', [StudentHomesController::class, 'destroy'])->name('studenthomes.destroy');
     });
 
+    //Routes for Providers to view the dashboard
     Route::middleware('Provider')->group(function () {
         Route::get('/provider', function () {
             return view('provider.dashboard');
         })->name('provider.dashboard');
     });
 
+    //Routes for Users to view the dashboard
     Route::middleware('User')->group(function () {
         Route::get('/user', function () {
             return view('user.dashboard');
