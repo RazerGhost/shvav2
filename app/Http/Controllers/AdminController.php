@@ -77,7 +77,7 @@ class AdminController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('admin.edit')->with('edituser', $user);
     }
 
     /**
