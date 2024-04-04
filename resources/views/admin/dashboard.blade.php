@@ -36,7 +36,7 @@
                     </x-slot:headings>
                     <x-bladewind::tab-body>
                         <x-bladewind::tab-content name="students" active="true">
-                            <div class="p-6">
+                            <div class="p-6 overflow-scroll">
                                 <x-bladewind::table>
                                     <x-slot name="header">
                                         <th>Voornaam</th>
@@ -48,6 +48,7 @@
                                         <th>provincie</th>
                                         <th>postcode</th>
                                         <th>homeid</th>
+                                        <th>Actions</th>
                                     </x-slot>
                                     @foreach ($students as $student)
                                         <tr>
@@ -60,13 +61,21 @@
                                             <td>{{ $student->state }}</td>
                                             <td>{{ $student->zip }}</td>
                                             <td>{{ $student->homeid }}</td>
+                                            <td>
+                                                <x-primary-button class="text-gray-900 dark:text-gray-100">
+                                                    <a href="{{ route('admin.editstudent', $student->id) }}">Edit</a>
+                                                </x-primary-button>
+                                                <x-primary-button class="text-gray-900 dark:text-gray-100">
+                                                    <a href="{{ route('admin.deletestudent', $student->id) }}">Delete</a>
+                                                </x-primary-button>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </x-bladewind::table>
                             </div>
                         </x-bladewind::tab-content>
                         <x-bladewind::tab-content name="providers">
-                            <div class="p-6">
+                            <div class="p-6 overflow-scroll">
                                 <x-bladewind::table>
                                     <x-slot name="header">
                                         <th>Bedrijf</th>
@@ -76,6 +85,7 @@
                                         <th>stad</th>
                                         <th>provincie</th>
                                         <th>postcode</th>
+                                        <th>Actions</th>
                                     </x-slot>
                                     @foreach ($providers as $provider)
                                         <tr>
@@ -86,13 +96,21 @@
                                             <td>{{ $provider->city }}</td>
                                             <td>{{ $provider->state }}</td>
                                             <td>{{ $provider->zip }}</td>
+                                            <td>
+                                                <x-primary-button class="text-gray-900 dark:text-gray-100">
+                                                    <a href="{{ route('admin.editprovider', $provider->id) }}">Edit</a>
+                                                </x-primary-button>
+                                                <x-primary-button class="text-gray-900 dark:text-gray-100">
+                                                    <a href="{{ route('admin.deleteprovider', $provider->id) }}">Delete</a>
+                                                </x-primary-button>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </x-bladewind::table>
                             </div>
                         </x-bladewind::tab-content>
                         <x-bladewind::tab-content name="employees">
-                            <x-primary-button class="p-6 text-gray-900 dark:text-gray-100 x-p">
+                            <x-primary-button class="p-6 text-gray-900 x-p dark:text-gray-100">
                                 <a href="{{ route('admin.createemployee') }}">Add Employee</a>
                             </x-primary-button>
                             <div class="p-6 overflow-scroll">
@@ -106,6 +124,7 @@
                                         <th>stad</th>
                                         <th>provincie</th>
                                         <th>postcode</th>
+                                        <th>Actions</th>
                                     </x-slot>
                                     @foreach ($employees as $employee)
                                         <tr>
@@ -117,6 +136,14 @@
                                             <td>{{ $employee->city }}</td>
                                             <td>{{ $employee->state }}</td>
                                             <td>{{ $employee->zip }}</td>
+                                            <td>
+                                                <x-primary-button class="text-gray-900 dark:text-gray-100">
+                                                    <a href="{{ route('admin.editemployee', $employee->id) }}">Edit</a>
+                                                </x-primary-button>
+                                                <x-primary-button class="text-gray-900 dark:text-gray-100">
+                                                    <a href="{{ route('admin.deleteemployee', $employee->id) }}">Delete</a>
+                                                </x-primary-button>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </x-bladewind::table>
