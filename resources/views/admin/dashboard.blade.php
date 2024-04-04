@@ -63,10 +63,10 @@
                                             <td>{{ $student->homeid }}</td>
                                             <td>
                                                 <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                    <a href="{{ route('admin.editstudent', $student->id) }}">Edit</a>
+                                                    <a href="{{ route('admin.edituser', $student->id) }}">Edit</a>
                                                 </x-primary-button>
                                                 <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                    <a href="{{ route('admin.deletestudent', $student->id) }}">Delete</a>
+                                                    <a href="{{ route('admin.deleteuser', $student->id) }}">Delete</a>
                                                 </x-primary-button>
                                             </td>
                                         </tr>
@@ -98,10 +98,10 @@
                                             <td>{{ $provider->zip }}</td>
                                             <td>
                                                 <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                    <a href="{{ route('admin.editprovider', $provider->id) }}">Edit</a>
+                                                    <a href="{{ route('admin.edituser', $provider->id) }}">Edit</a>
                                                 </x-primary-button>
                                                 <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                    <a href="{{ route('admin.deleteprovider', $provider->id) }}">Delete</a>
+                                                    <a href="{{ route('admin.deleteuser', $provider->id) }}">Delete</a>
                                                 </x-primary-button>
                                             </td>
                                         </tr>
@@ -111,7 +111,7 @@
                         </x-bladewind::tab-content>
                         <x-bladewind::tab-content name="employees">
                             <x-primary-button class="p-6 text-gray-900 x-p dark:text-gray-100">
-                                <a href="{{ route('admin.createemployee') }}">Add Employee</a>
+                                <a href="{{ route('admin.createuser') }}">Add Employee</a>
                             </x-primary-button>
                             <div class="p-6 overflow-scroll">
                                 <x-bladewind::table>
@@ -138,10 +138,10 @@
                                             <td>{{ $employee->zip }}</td>
                                             <td>
                                                 <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                    <a href="{{ route('admin.editemployee', $employee->id) }}">Edit</a>
+                                                    <a href="{{ route('admin.edituser', $employee->id) }}">Edit</a>
                                                 </x-primary-button>
                                                 <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                    <a href="{{ route('admin.deleteemployee', $employee->id) }}">Delete</a>
+                                                    <a href="{{ route('admin.deleteuser', $employee->id) }}">Delete</a>
                                                 </x-primary-button>
                                             </td>
                                         </tr>

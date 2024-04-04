@@ -1,11 +1,19 @@
 {
     "cSpell.words": [
+        "createemployee",
         "createhome",
+        "createuser",
         "deletehome",
+        "deleteuser",
+        "editemployee",
         "edithome",
+        "edituser",
         "provider",
+        "storeemployee",
         "storehome",
+        "storeuser",
         "studenthome",
-        "studenthomes"
+        "studenthomes",
+        "updateuser"
     ]
 }

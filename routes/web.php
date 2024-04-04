@@ -20,9 +20,11 @@ Route::middleware('auth')->group(function () {
     //Routes for Admins to view the dashboard
     Route::middleware('Admin')->group(function () {
         Route::get('/admin', [AdminController::class,'index'])->name('admin.dashboard');
-        Route::get('/createemployee', [AdminController::class, 'create'])->name('admin.createemployee');
-        Route::post('/storeemployee', [AdminController::class, 'store'])->name('admin.storeemployee');
-        
+        Route::get('/createuser', [AdminController::class, 'create'])->name('admin.createuser');
+        Route::post('/storeuser', [AdminController::class, 'store'])->name('admin.storeuser');
+        Route::get('/edituser/{user}', [AdminController::class, 'edit'])->name('admin.edituser');
+        Route::patch('/updateuser/{user}', [AdminController::class,'update'])->name('admin.updateuser');
+        Route::delete('/deleteuser/{user}', [AdminController::class, 'destroy'])->name('admin.deleteuser');
     });
 
     //Routes for Employees to create and edit homes

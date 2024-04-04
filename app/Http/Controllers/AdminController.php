@@ -61,7 +61,7 @@ class AdminController extends Controller
             'zip' => $request->zip,
         ]);
 
-        return redirect('/')->with('success', 'Student Home saved!');
+        return redirect('/admin')->with('success', 'User saved!');
     }
 
     /**
