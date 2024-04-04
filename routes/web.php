@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentHomesController;
 use Illuminate\Support\Facades\Route;
@@ -18,9 +19,7 @@ Route::middleware('auth')->group(function () {
 
     //Routes for Admins to view the dashboard
     Route::middleware('Admin')->group(function () {
-        Route::get('/admin', function () {
-            return view('admin.dashboard');
-        })->name('admin.dashboard');
+        Route::get('/admin', [AdminController::class,'index'])->name('admin.dashboard');
     });
 
     //Routes for Employees to create and edit homes

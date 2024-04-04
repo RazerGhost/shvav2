@@ -12,9 +12,13 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users = User::all();
 
-        return view("admin.dashboard", compact("users"));
+        $users = User::all();
+        $employees = User::where('role', 1)->get();
+        $students = User::where('role', 2)->get();
+        $providers = User::where('role', 3)->get();
+
+        return view("admin.dashboard", compact("employees", "students", "providers"));
     }
 
     /**

@@ -28,6 +28,35 @@
                         You are a House provider
                     </div>
                 @endif
+                <h1 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+                    {{ __('Students') }}
+                </h1>
+                <x-bladewind::table>
+                    <x-slot name="header">
+                        <th>Voornaam</th>
+                        <th>achternaam</th>
+                        <th>Telefoon nummer</th>
+                        <th>Email</th>
+                        <th>adres</th>
+                        <th>stad</th>
+                        <th>provincie</th>
+                        <th>postcode</th>
+                        <th>homeid</th>
+                    </x-slot>
+                    @foreach ($students as $student)
+                        <tr>
+                            <td>{{ $student->first_name }}</td>
+                            <td>{{ $student->last_name }}</td>
+                            <td>{{ $student->phone }}</td>
+                            <td>{{ $student->email }}</td>
+                            <td>{{ $student->address }}</td>
+                            <td>{{ $student->city }}</td>
+                            <td>{{ $student->state }}</td>
+                            <td>{{ $student->zip }}</td>
+                            <td>{{ $student->homeid }}</td>
+                        </tr>
+                    @endforeach
+                </x-bladewind::table>
             </div>
         </div>
     </div>
