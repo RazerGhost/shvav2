@@ -18,12 +18,23 @@ class StudentHomesController extends Controller
     public function home($id): View
     {
         $home = StudentHomes::find($id);
-        return view('studenthomes.home')->with('studenthome', $home);
+        $provider = User::where('id', $home->provider_id)->first();
+        return view('studenthomes.home', compact('home', 'provider'));
     }
 
     public function create()
     {
-        return view('studenthomes.create');
+        $providers = User::where('role', '3')->get();
+        $providerlist = [];
+        foreach ($providers as $provider) {
+            $providerlist[] = [
+                'value' => $provider->id,
+                'name' => $provider->name,
+            ];
+        }
+
+        dd($providerlist);
+        return view('studenthomes.create')->with('providers', $providerlist);
     }
 
     public function store(Request $request, StudentHomes $studenthome)

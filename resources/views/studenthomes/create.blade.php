@@ -53,12 +53,15 @@
                                     <label for="zip" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Postcode</label>
                                     <input type="text" name="zip" id="zip" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300" required>
                                 </div>
+
+                                {{-- provider --}}
+                                <x-bladewind::dropdown name="provider_id" placeholder="Selecteer het Bedrijf"
+
                                 <div class="mb-4">
                                     <x-primary-button type="submit" class="w-full p-2 text-white bg-blue-500 rounded-md">Verzenden</x-primary-button>
                                 </div>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>
