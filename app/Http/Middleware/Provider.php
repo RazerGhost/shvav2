@@ -18,7 +18,12 @@ class Provider
 
         $auth = auth()->user()->role;
 
-        if ($auth != 3 && $auth != 2 && $auth != 1 && $auth != 0) {
+        /**
+         * use this code if you want to allow all users with roles 3, 2, 1, and 0 to access the route
+         * if ($auth != 3 && $auth != 2 && $auth != 1 && $auth != 0) {
+         */
+
+        if ($auth != 3 && $auth != 1 && $auth != 0) {
             return response()->json('Oops! You do not have permission to access.');
         }
         return $next($request);

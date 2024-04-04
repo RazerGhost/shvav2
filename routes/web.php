@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentHomesController;
 use Illuminate\Support\Facades\Route;
@@ -18,9 +19,10 @@ Route::middleware('auth')->group(function () {
 
     //Routes for Admins to view the dashboard
     Route::middleware('Admin')->group(function () {
-        Route::get('/admin', function () {
-            return view('admin.dashboard');
-        })->name('admin.dashboard');
+        Route::get('/admin', [AdminController::class,'index'])->name('admin.dashboard');
+        Route::get('/createemployee', [AdminController::class, 'create'])->name('admin.createemployee');
+        Route::post('/storeemployee', [AdminController::class, 'store'])->name('admin.storeemployee');
+        
     });
 
     //Routes for Employees to create and edit homes
@@ -32,12 +34,14 @@ Route::middleware('auth')->group(function () {
         Route::delete('/deletehome/{studenthome}', [StudentHomesController::class, 'destroy'])->name('studenthomes.destroy');
     });
 
+    //Routes for Providers to view the dashboard
     Route::middleware('Provider')->group(function () {
         Route::get('/provider', function () {
             return view('provider.dashboard');
         })->name('provider.dashboard');
     });
 
+    //Routes for Users to view the dashboard
     Route::middleware('User')->group(function () {
         Route::get('/user', function () {
             return view('user.dashboard');
