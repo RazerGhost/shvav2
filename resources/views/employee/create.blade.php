@@ -14,7 +14,7 @@
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
-                <form method="POST" action="{{ route('admin.storeuser') }}" class="p-6">
+                <form method="POST" action="{{ route('employee.storeuser') }}" class="p-6">
                     @csrf
 
                     @if (request()->query('role') == 3)

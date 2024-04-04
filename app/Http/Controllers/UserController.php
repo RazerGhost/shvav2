@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
-class AdminController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class AdminController extends Controller
         $students = User::where('role', 2)->get();
         $providers = User::where('role', 3)->get();
 
-        return view("admin.dashboard", compact("employees", "students", "providers"));
+        return view("employee.dashboard", compact("employees", "students", "providers"));
     }
 
     /**
@@ -28,7 +28,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        return view('employee.create');
     }
 
     /**
@@ -100,7 +100,7 @@ class AdminController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.edit')->with('user', $user);
+        return view('employee.edit')->with('user', $user);
     }
 
     /**

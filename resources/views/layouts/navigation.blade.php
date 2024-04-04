@@ -20,12 +20,9 @@
                         <x-nav-link :href="route('studenthomes.create')" :active="request()->routeIs('studenthomes.create')">
                             {{ __('Creëer studenten woning') }}
                         </x-nav-link>
-
-                        @if (Auth::user()->role == 0)
-                            <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                                {{ __('Beheerdashboard') }}
-                            </x-nav-link>
-                        @endif
+                        <x-nav-link :href="route('employee.dashboard')" :active="request()->routeIs('employee.dashboard')">
+                            {{ __('Medewerkersdashboard') }}
+                        </x-nav-link>
                     @endif
 
                 </div>
@@ -115,11 +112,9 @@
                 <x-responsive-nav-link :href="route('studenthomes.create')" :active="request()->routeIs('studenthomes.create')">
                     {{ __('Creëer studenten woning') }}
                 </x-responsive-nav-link>
-                @if (Auth::user()->role == 0)
-                    <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                        {{ __('Beheerdashboard') }}
-                    </x-responsive-nav-link>
-                @endif
+                <x-responsive-nav-link :href="route('employee.dashboard')" :active="request()->routeIs('employee.dashboard')">
+                    {{ __('Medewerkersdashboard') }}
+                </x-responsive-nav-link>
             @endif
         </div>
 

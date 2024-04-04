@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentHomesController;
 use Illuminate\Support\Facades\Route;
@@ -17,23 +17,32 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    //Routes for Admins to view the dashboard
+    //Routes for Admins to view the dashboard + create/edit employees and users
     Route::middleware('Admin')->group(function () {
-        Route::get('/admin', [AdminController::class,'index'])->name('admin.dashboard');
-        Route::get('/createuser', [AdminController::class, 'create'])->name('admin.createuser');
-        Route::post('/storeuser', [AdminController::class, 'store'])->name('admin.storeuser');
-        Route::get('/edituser/{user}', [AdminController::class, 'edit'])->name('admin.edituser');
-        Route::patch('/updateuser/{user}', [AdminController::class,'update'])->name('admin.updateuser');
-        Route::delete('/deleteuser/{user}', [AdminController::class, 'destroy'])->name('admin.deleteuser');
+        Route::get('/admin', [UserController::class, 'index'])->name('employee.dashboard');
+        Route::get('/createuser', [UserController::class, 'create'])->name('employee.createuser');
+        Route::post('/storeuser', [UserController::class, 'store'])->name('employee.storeuser');
+        Route::get('/edituser/{user}', [UserController::class, 'edit'])->name('employee.edituser');
+        Route::patch('/updateuser/{user}', [UserController::class, 'update'])->name('employee.updateuser');
+        Route::delete('/deleteuser/{user}', [UserController::class, 'destroy'])->name('employee.deleteuser');
     });
 
-    //Routes for Employees to create and edit homes
+    //Routes for Employees to view the dashboard + create/edit homes and users
     Route::middleware('Employee')->group(function () {
+        Route::get('/employee', [UserController::class, 'index'])->name('employee.dashboard');
+        //Routes for Employees to create and edit homes
         Route::get('/createhome', [StudentHomesController::class, 'create'])->name('studenthomes.create');
         Route::post('/storehome', [StudentHomesController::class, 'store'])->name('studenthomes.store');
         Route::get('/edithome/{studenthome}', [StudentHomesController::class, 'edit'])->name('studenthomes.edit');
         Route::patch('/updatehome/{studenthome}', [StudentHomesController::class, 'update'])->name('studenthomes.update');
         Route::delete('/deletehome/{studenthome}', [StudentHomesController::class, 'destroy'])->name('studenthomes.destroy');
+
+        //Routes for Employees to create/edit Students or Providers/Companies
+        Route::get('/createuser', [UserController::class, 'create'])->name('employee.createuser');
+        Route::post('/storeuser', [UserController::class, 'store'])->name('employee.storeuser');
+        Route::get('/edituser/{user}', [UserController::class, 'edit'])->name('employee.edituser');
+        Route::patch('/updateuser/{user}', [UserController::class, 'update'])->name('employee.updateuser');
+        Route::delete('/deleteuser/{user}', [UserController::class, 'destroy'])->name('employee.deleteuser');
     });
 
     //Routes for Providers to view the dashboard
