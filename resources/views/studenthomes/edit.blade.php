@@ -15,7 +15,7 @@
                         <div class="flex flex-row w-full gap-4">
                             <div class="flex flex-col w-1/2 gap-4">
                                 <div class="">
-                                    <label for="image" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Image</label>
+                                    <label for="image" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Afbeelding</label>
                                     <input type="file" value={{ $studenthome->image }} name="image" id="image" accept="image/png, image/jpeg" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300" required>
                                 </div>
                                 <div class="w-full mb-3">
@@ -25,36 +25,36 @@
                             <div class="flex flex-col w-1/2">
                                 {{-- name --}}
                                 <div class="mb-4">
-                                    <label for="name" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Name</label>
+                                    <label for="name" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Naam</label>
                                     <input type="text" value="{{ $studenthome->name }}" name="name" id="name" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300" required>
                                 </div>
                                 {{-- description --}}
                                 <div class="mb-4">
-                                    <label for="description" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Description</label>
-                                    <input type="text"  value="{{ $studenthome->description }}" name="description" id="description" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300" required>
+                                    <label for="description" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Beschrijving</label>
+                                    <input type="text" value="{{ $studenthome->description }}" name="description" id="description" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300" required>
                                 </div>
                                 {{-- address --}}
                                 <div class="mb-4">
-                                    <label for="address" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Address</label>
+                                    <label for="address" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Adres</label>
                                     <input type="text" value="{{ $studenthome->address }}" name="address" id="address" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300" required>
                                 </div>
                                 {{-- city --}}
                                 <div class="mb-4">
-                                    <label for="city" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">City</label>
+                                    <label for="city" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Stad</label>
                                     <input type="text" value="{{ $studenthome->city }}" name="city" id="city" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300" required>
                                 </div>
                                 {{-- state --}}
                                 <div class="mb-4">
-                                    <label for="state" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">State</label>
+                                    <label for="state" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Provincie</label>
                                     <input type="text" value="{{ $studenthome->state }}" name="state" id="state" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300" required>
                                 </div>
                                 {{-- zip --}}
                                 <div class="mb-4">
-                                    <label for="zip" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Zip</label>
+                                    <label for="zip" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Postcode</label>
                                     <input type="text" value="{{ $studenthome->zip }}" name="zip" id="zip" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300" required>
                                 </div>
                                 <div class="mb-4">
-                                    <x-primary-button type="submit" class="w-full p-2 text-white bg-blue-500 rounded-md">Submit</x-primary-button>
+                                    <x-primary-button type="submit" class="w-full p-2 text-white bg-blue-500 rounded-md">Verzenden</x-primary-button>
                                 </div>
                             </div>
                         </div>

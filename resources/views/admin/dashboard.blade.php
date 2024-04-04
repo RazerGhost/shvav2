@@ -13,9 +13,9 @@
                 </div>
                 <x-bladewind::tab-group name="usertypes">
                     <x-slot:headings>
-                        <x-bladewind::tab-heading name="students" label="Students" active="true" />
-                        <x-bladewind::tab-heading name="providers" label="Providers" />
-                        <x-bladewind::tab-heading name="employees" label="Employees" />
+                        <x-bladewind::tab-heading name="students" label="Studenten" active="true" />
+                        <x-bladewind::tab-heading name="providers" label="Bedrijven" />
+                        <x-bladewind::tab-heading name="employees" label="Medewerkers" />
                     </x-slot:headings>
                     <x-bladewind::tab-body>
                         <x-bladewind::tab-content name="students" active="true">

@@ -14,16 +14,16 @@
                 <div class="hidden space-x-8 sm:ml-10 sm:flex sm:items-center">
 
                     <x-nav-link :href="route('studenthomes.homes')" :active="request()->routeIs('studenthomes.homes')">
-                        {{ __('View Student Homes') }}
+                        {{ __('Bekijk studenten woningen') }}
                     </x-nav-link>
                     @if (Auth::check() && (Auth::user()->role == 1 || Auth::user()->role == 0))
                         <x-nav-link :href="route('studenthomes.create')" :active="request()->routeIs('studenthomes.create')">
-                            {{ __('Create Student Home') }}
+                            {{ __('Creëer studenten woning') }}
                         </x-nav-link>
 
                         @if (Auth::user()->role == 0)
                             <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                                {{ __('Admin Dashboard') }}
+                                {{ __('Beheerdashboard') }}
                             </x-nav-link>
                         @endif
                     @endif
@@ -38,7 +38,13 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none dark:bg-gray-800 dark:text-gray-400 dark:hover:text-gray-300">
-                                <div>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</div>
+                                <div>
+                                    @if (Auth::user()->role == 3)
+                                        {{ Auth::user()->name }}
+                                    @else
+                                        {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                                    @endif
+                                </div>
 
                                 <div class="ms-1">
                                     <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -50,7 +56,7 @@
 
                         <x-slot name="content">
                             <x-dropdown-link :href="route('profile.edit')">
-                                {{ __('Profile') }}
+                                {{ __('Profiel') }}
                             </x-dropdown-link>
 
                             <!-- Authentication -->
@@ -59,7 +65,7 @@
 
                                 <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                    {{ __('Log Out') }}
+                                    {{ __('Uitloggen') }}
                                 </x-dropdown-link>
                             </form>
                         </x-slot>
@@ -74,12 +80,12 @@
                             </a>
                         @else
                             <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                Log in
+                                Inloggen
                             </a>
 
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                    Register
+                                    Registreren
                                 </a>
                             @endif
                         @endauth
@@ -103,15 +109,15 @@
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('studenthomes.homes')" :active="request()->routeIs('studenthomes.homes')">
-                {{ __('View Student Homes') }}
+                {{ __('Bekijk studenten woningen') }}
             </x-responsive-nav-link>
             @if (Auth::check() && (Auth::user()->role == 1 || Auth::user()->role == 0))
                 <x-responsive-nav-link :href="route('studenthomes.create')" :active="request()->routeIs('studenthomes.create')">
-                    {{ __('Create Student Home') }}
+                    {{ __('Creëer studenten woning') }}
                 </x-responsive-nav-link>
                 @if (Auth::user()->role == 0)
                     <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                        {{ __('Admin Dashboard') }}
+                        {{ __('Beheerdashboard') }}
                     </x-responsive-nav-link>
                 @endif
             @endif
@@ -121,13 +127,19 @@
         @if (Auth::check())
             <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
                 <div class="px-4">
-                    <div class="text-base font-medium text-gray-800 dark:text-gray-200">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</div>
+                    <div class="text-base font-medium text-gray-800 dark:text-gray-200">
+                        @if (Auth::user()->role == 3)
+                            {{ Auth::user()->name }}
+                        @else
+                            {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                        @endif
+                    </div>
                     <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
                 </div>
 
                 <div class="mt-3 space-y-1">
                     <x-responsive-nav-link :href="route('profile.edit')">
-                        {{ __('Profile') }}
+                        {{ __('Profiel') }}
                     </x-responsive-nav-link>
 
                     <!-- Authentication -->
@@ -136,7 +148,7 @@
 
                         <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                            {{ __('Log Out') }}
+                            {{ __('Uitloggen') }}
                         </x-responsive-nav-link>
                     </form>
                 </div>

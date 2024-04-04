@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-            {{ __('Student Homes') }}
+            {{ __('Studenten Woning') }}
         </h2>
     </x-slot>
 
@@ -20,14 +20,14 @@
                             @if (Auth::user()->role == 1 || Auth::user()->role == 0)
                                 <button class="w-full mt-4">
                                     <a href="{{ route('studenthomes.edit', $studenthome->id) }}">
-                                        {{ __('Edit') }}
+                                        {{ __('Bewerken') }}
                                     </a>
                                 </button>
                                 <form method="POST" class="flex justify-center w-full mt-4" action="{{ route('studenthomes.destroy', $studenthome->id) }}">
                                     @csrf
                                     @method('DELETE')
                                     <button>
-                                        {{ __('Delete') }}
+                                        {{ __('Verwijderen') }}
                                     </button>
                                 </form>
                             @endif
