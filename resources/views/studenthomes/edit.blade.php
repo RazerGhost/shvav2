@@ -21,6 +21,10 @@
                                 <div class="w-full mb-3">
                                     <img id="image-preview" src="{{ $studenthome->image }}" alt="preview image">
                                 </div>
+                                {{-- provider --}}
+                                <di class="h-auto overflow-scroll">
+                                    <x-bladewind::dropdown name="provider_id" placeholder="Selecteer het Bedrijf" :data="$providerlist" label_key="name" value_key="id" required />
+                                </di>
                             </div>
                             <div class="flex flex-col w-1/2">
                                 {{-- name --}}

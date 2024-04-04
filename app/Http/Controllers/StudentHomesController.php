@@ -83,7 +83,20 @@ class StudentHomesController extends Controller
 
     public function edit(StudentHomes $studenthome): View
     {
-        return view('studenthomes.edit')->with('studenthome', $studenthome);
+        $providers = User::where('role', '3')->get();
+        $providerlist = [];
+        foreach ($providers as $provider) {
+            $providerlist[] = [
+                'id' => $provider->id,
+                'name' => $provider->name,
+            ];
+        }
+
+        if (count($providerlist) == 0) {
+            return redirect('/')->with('error', 'No providers found!');
+        }
+
+        return view('studenthomes.edit', compact('studenthome', 'providerlist'));
     }
 
     public function update(Request $request, StudentHomes $studenthome)
@@ -96,6 +109,7 @@ class StudentHomesController extends Controller
             'zip' => 'required|min:5|max:255',
             'description' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
+            'provider_id' => 'required|integer',
         ]);
 
         $path = $request->file('image')->store('public/images');
@@ -109,6 +123,7 @@ class StudentHomesController extends Controller
             'zip' => $request->zip,
             'description' => $request->description,
             'image' => $url,
+            'provider_id' => $request->provider_id,
         ]);
 
         return redirect('/')->with('success', 'Student Home updated!');
