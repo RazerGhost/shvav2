@@ -43,9 +43,13 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
-
+        // Add the home_id column to the users table
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('home_id')->nullable()->constrained('student_homes', 'provider_id');
+            $table->foreignId('home_id')->nullable()->constrained('student_homes', 'id');
+        });
+        // Add the provider_id column to the student_homes table
+        Schema::table('student_homes', function (Blueprint $table) {
+            $table->foreignId('provider_id')->nullable()->constrained('users', 'id');
         });
     }
 

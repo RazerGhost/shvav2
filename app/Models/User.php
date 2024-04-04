@@ -28,6 +28,7 @@ class User extends Authenticatable
         'zip', // For Everyone
         'home_id', // For Student
         'password', // For Everyone
+        'role', // For Everyone
     ];
 
     /**
