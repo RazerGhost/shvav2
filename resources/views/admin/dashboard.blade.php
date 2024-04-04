@@ -11,23 +11,6 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're in the admin dashboard") }}
                 </div>
-                @if (Auth::user()->role == 0)
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
-                        You are an admin
-                    </div>
-                @elseif (Auth::user()->role == 1)
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
-                        You are an employee
-                    </div>
-                @elseif (Auth::user()->role == 2)
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
-                        You are a customer
-                    </div>
-                @else
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
-                        You are a House provider
-                    </div>
-                @endif
                 <x-bladewind::tab-group name="usertypes">
                     <x-slot:headings>
                         <x-bladewind::tab-heading name="students" label="Students" active="true" />
