@@ -11,13 +11,13 @@
                 <form method="POST" action="{{ route('admin.updateuser', $user) }}" class="p-6">
                     @csrf
                     @method('PATCH')
-                    @if ( $user->role == 3)
+                    @if ($user->role == 3)
                         <div class="grid grid-cols-2 gap-4 mb-4">
                             <!-- Name -->
                             <div>
-                                <x-input-label for="first_name" :value="__('Naam')" />
-                                <input id="first_name" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300" type="text" name="first_name" :value="old('first_name')" required autofocus autocomplete="first_name" value="{{ $user->first_name }}" />
-                                <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
+                                <x-input-label for="name" :value="__('Naam')" />
+                                <input id="name" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" value="{{ $user->name }}" />
+                                <x-input-error :messages="$errors->get('name')" class="mt-2" />
                             </div>
                         </div>
                     @else
@@ -58,7 +58,11 @@
                             <input id="password" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300" type="password" name="password" required autocomplete="new-password" value="{{ $user->password }}" />
                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
                         </div>
-
+                        <div>
+                            <x-input-label for="password_confirmation" :value="__('Wachtwoord bevestigen')" />
+                            <input id="password_confirmation" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300" type="password" name="password_confirmation" required autocomplete="new-password" :value="old(password_confirmation)" />
+                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                        </div>
                     </div>
 
                     <!-- Address -->
@@ -89,7 +93,7 @@
                     </div>
 
                     <!-- Role -->
-                    <x-text-input class="hidden" type="text" name="role" id="role" value="{{ user->role }}" />
+                    <x-text-input class="hidden" type="text" name="role" id="role" value="{{ $user->role }}" />
 
                     <div class="flex items-center justify-end mb-4">
                         <x-primary-button class="ms-4">

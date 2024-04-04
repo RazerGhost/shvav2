@@ -51,9 +51,13 @@
                                                 <x-primary-button class="text-gray-900 dark:text-gray-100">
                                                     <a href="{{ route('admin.edituser', $student->id) }}">Edit</a>
                                                 </x-primary-button>
-                                                <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                    <a href="{{ route('admin.deleteuser', $student->id) }}">Delete</a>
-                                                </x-primary-button>
+                                                <form method="POST" class="flex justify-center w-full mt-4" action="{{ route('admin.deleteuser', $student->id) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <x-primary-button class="text-gray-900 dark:text-gray-100">
+                                                        {{ __('Verwijderen') }}
+                                                    </x-primary-button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -89,9 +93,13 @@
                                                 <x-primary-button class="text-gray-900 dark:text-gray-100">
                                                     <a href="{{ route('admin.edituser', $provider->id) }}">Edit</a>
                                                 </x-primary-button>
-                                                <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                    <a href="{{ route('admin.deleteuser', $provider->id) }}">Delete</a>
-                                                </x-primary-button>
+                                                <form method="POST" class="flex justify-center w-full mt-4" action="{{ route('admin.deleteuser', $provider->id) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <x-primary-button class="text-gray-900 dark:text-gray-100">
+                                                        {{ __('Verwijderen') }}
+                                                    </x-primary-button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -129,9 +137,13 @@
                                                 <x-primary-button class="text-gray-900 dark:text-gray-100">
                                                     <a href="{{ route('admin.edituser', $employee->id) }}">Edit</a>
                                                 </x-primary-button>
-                                                <x-primary-button class="text-gray-900 dark:text-gray-100">
-                                                    <a href="{{ route('admin.deleteuser', $employee->id) }}">Delete</a>
-                                                </x-primary-button>
+                                                <form method="POST" class="flex justify-center w-full mt-4" action="{{ route('admin.deleteuser', $employee->id) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <x-primary-button class="text-gray-900 dark:text-gray-100">
+                                                        {{ __('Verwijderen') }}
+                                                    </x-primary-button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

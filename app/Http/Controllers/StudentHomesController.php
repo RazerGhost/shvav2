@@ -18,7 +18,6 @@ class StudentHomesController extends Controller
     public function home($id): View
     {
         $home = StudentHomes::find($id);
-        //dd($home);
         return view('studenthomes.home')->with('studenthome', $home);
     }
 
@@ -88,10 +87,10 @@ class StudentHomesController extends Controller
         return redirect('/')->with('success', 'Student Home updated!');
     }
 
-    public function destroy(StudentHomes $studenthome)
+    public function destroy(StudentHomes $studenthome, User $user)
     {
-        $home = StudentHomes::where('id', $studenthome->id);
-        User::where('home_id', $studenthome->id)->update(['home_id' => null]);
+        $home = $studenthome->where('id', $studenthome->id);
+        $user->where('home_id', $studenthome->id)->update(['home_id' => null]);
         $home->delete();
 
         return redirect('/')->with('success', 'Student Home deleted!');

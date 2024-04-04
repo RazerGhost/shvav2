@@ -34,32 +34,55 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
-
-        $request->validate([
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'tel_number' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
-            'city' => ['required', 'string', 'max:255'],
-            'state' => ['required', 'string', 'max:255'],
-            'zip' => ['required', 'string', 'max:255'],
-        ]);
-        User::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => $request->role,
-            'phone' => $request->tel_number,
-            'address' => $request->address,
-            'city' => $request->city,
-            'state' => $request->state,
-            'zip' => $request->zip,
-        ]);
+        if ($request->role != 3) {
+            $request->validate([
+                'first_name' => ['required', 'string', 'max:255'],
+                'last_name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+                'tel_number' => ['required', 'string', 'max:255'],
+                'address' => ['required', 'string', 'max:255'],
+                'city' => ['required', 'string', 'max:255'],
+                'state' => ['required', 'string', 'max:255'],
+                'zip' => ['required', 'string', 'max:255'],
+            ]);
+            $user->create([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role' => $request->role,
+                'phone' => $request->tel_number,
+                'address' => $request->address,
+                'city' => $request->city,
+                'state' => $request->state,
+                'zip' => $request->zip,
+            ]);
+        } else {
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+                'tel_number' => ['required', 'string', 'max:255'],
+                'address' => ['required', 'string', 'max:255'],
+                'city' => ['required', 'string', 'max:255'],
+                'state' => ['required', 'string', 'max:255'],
+                'zip' => ['required', 'string', 'max:255'],
+            ]);
+            $user->create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role' => $request->role,
+                'phone' => $request->tel_number,
+                'address' => $request->address,
+                'city' => $request->city,
+                'state' => $request->state,
+                'zip' => $request->zip,
+            ]);
+        }
 
         return redirect('/admin')->with('success', 'User saved!');
     }
@@ -85,7 +108,55 @@ class AdminController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        if ($user->role != 3) {
+            $request->validate([
+                'first_name' => ['required', 'string', 'max:255'],
+                'last_name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+                'tel_number' => ['required', 'string', 'max:255'],
+                'address' => ['required', 'string', 'max:255'],
+                'city' => ['required', 'string', 'max:255'],
+                'state' => ['required', 'string', 'max:255'],
+                'zip' => ['required', 'string', 'max:255'],
+            ]);
+            $user->update([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role' => $request->role,
+                'phone' => $request->tel_number,
+                'address' => $request->address,
+                'city' => $request->city,
+                'state' => $request->state,
+                'zip' => $request->zip,
+            ]);
+        } else {
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+                'tel_number' => ['required', 'string', 'max:255'],
+                'address' => ['required', 'string', 'max:255'],
+                'city' => ['required', 'string', 'max:255'],
+                'state' => ['required', 'string', 'max:255'],
+                'zip' => ['required', 'string', 'max:255'],
+            ]);
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role' => $request->role,
+                'phone' => $request->tel_number,
+                'address' => $request->address,
+                'city' => $request->city,
+                'state' => $request->state,
+                'zip' => $request->zip,
+            ]);
+        }
+
+        return redirect('/admin')->with('success', 'User saved!');
     }
 
     /**
@@ -93,6 +164,7 @@ class AdminController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect('/admin')->with('success', 'User deleted!');
     }
 }

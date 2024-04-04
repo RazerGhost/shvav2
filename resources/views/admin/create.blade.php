@@ -19,7 +19,7 @@
 
                     @if (request()->query('role') == 3)
                         <div class="grid grid-cols-2 gap-4 mb-4">
-                            <!-- First Name -->
+                            <!-- Name -->
                             <div>
                                 <x-input-label for="name" :value="__('Naam')" />
                                 <input id="name" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
