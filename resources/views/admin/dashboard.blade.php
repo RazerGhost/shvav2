@@ -96,7 +96,7 @@
                                 <a href="{{ route('admin.createemployee') }}">Add Employee</a>
                             </x-primary-button>
                             <div class="p-6">
-                                <x-bladewind::table>
+                                <x-bladewind::table class="overflow-visible">
                                     <x-slot name="header">
                                         <th>Voornaam</th>
                                         <th>achternaam</th>
