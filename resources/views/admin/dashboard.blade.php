@@ -28,35 +28,99 @@
                         You are a House provider
                     </div>
                 @endif
-                <h1 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-                    {{ __('Students') }}
-                </h1>
-                <x-bladewind::table>
-                    <x-slot name="header">
-                        <th>Voornaam</th>
-                        <th>achternaam</th>
-                        <th>Telefoon nummer</th>
-                        <th>Email</th>
-                        <th>adres</th>
-                        <th>stad</th>
-                        <th>provincie</th>
-                        <th>postcode</th>
-                        <th>homeid</th>
-                    </x-slot>
-                    @foreach ($students as $student)
-                        <tr>
-                            <td>{{ $student->first_name }}</td>
-                            <td>{{ $student->last_name }}</td>
-                            <td>{{ $student->phone }}</td>
-                            <td>{{ $student->email }}</td>
-                            <td>{{ $student->address }}</td>
-                            <td>{{ $student->city }}</td>
-                            <td>{{ $student->state }}</td>
-                            <td>{{ $student->zip }}</td>
-                            <td>{{ $student->homeid }}</td>
-                        </tr>
-                    @endforeach
-                </x-bladewind::table>
+                <x-bladewind::tab-group name="free-pics">
+                    <x-slot:headings>
+                        <x-bladewind::tab-heading name="students" label="Students" active="true" />
+                        <x-bladewind::tab-heading name="providers" label="Providers" />
+                        <x-bladewind::tab-heading name="employees" label="Employees" />
+                    </x-slot:headings>
+                    <x-bladewind::tab-body>
+                        <x-bladewind::tab-content name="students" active="true">
+                            <div class="p-6">
+                                <x-bladewind::table>
+                                    <x-slot name="header">
+                                        <th>Voornaam</th>
+                                        <th>achternaam</th>
+                                        <th>Telefoon nummer</th>
+                                        <th>Email</th>
+                                        <th>adres</th>
+                                        <th>stad</th>
+                                        <th>provincie</th>
+                                        <th>postcode</th>
+                                        <th>homeid</th>
+                                    </x-slot>
+                                    @foreach ($students as $student)
+                                        <tr>
+                                            <td>{{ $student->first_name }}</td>
+                                            <td>{{ $student->last_name }}</td>
+                                            <td>{{ $student->phone }}</td>
+                                            <td>{{ $student->email }}</td>
+                                            <td>{{ $student->address }}</td>
+                                            <td>{{ $student->city }}</td>
+                                            <td>{{ $student->state }}</td>
+                                            <td>{{ $student->zip }}</td>
+                                            <td>{{ $student->homeid }}</td>
+                                        </tr>
+                                    @endforeach
+                                </x-bladewind::table>
+                            </div>
+                        </x-bladewind::tab-content>
+                        <x-bladewind::tab-content name="providers">
+                            <div class="p-6">
+                                <x-bladewind::table>
+                                    <x-slot name="header">
+                                        <th>Bedrijf</th>
+                                        <th>Telefoon nummer</th>
+                                        <th>Email</th>
+                                        <th>adres</th>
+                                        <th>stad</th>
+                                        <th>provincie</th>
+                                        <th>postcode</th>
+                                    </x-slot>
+                                    @foreach ($providers as $provider)
+                                        <tr>
+                                            <td>{{ $provider->name }}</td>
+                                            <td>{{ $provider->phone }}</td>
+                                            <td>{{ $provider->email }}</td>
+                                            <td>{{ $provider->address }}</td>
+                                            <td>{{ $provider->city }}</td>
+                                            <td>{{ $provider->state }}</td>
+                                            <td>{{ $provider->zip }}</td>
+                                        </tr>
+                                    @endforeach
+                                </x-bladewind::table>
+                            </div>
+                        </x-bladewind::tab-content>
+                        <x-bladewind::tab-content name="employees">
+                            <div class="p-6">
+                                <x-bladewind::table>
+                                    <x-slot name="header">
+                                        <th>Voornaam</th>
+                                        <th>achternaam</th>
+                                        <th>Telefoon nummer</th>
+                                        <th>Email</th>
+                                        <th>adres</th>
+                                        <th>stad</th>
+                                        <th>provincie</th>
+                                        <th>postcode</th>
+                                    </x-slot>
+                                    @foreach ($employees as $employee)
+                                        <tr>
+                                            <td>{{ $employee->first_name }}</td>
+                                            <td>{{ $employee->last_name }}</td>
+                                            <td>{{ $employee->phone }}</td>
+                                            <td>{{ $employee->email }}</td>
+                                            <td>{{ $employee->address }}</td>
+                                            <td>{{ $employee->city }}</td>
+                                            <td>{{ $employee->state }}</td>
+                                            <td>{{ $employee->zip }}</td>
+                                        </tr>
+                                    @endforeach
+                                </x-bladewind::table>
+                            </div>
+                        </x-bladewind::tab-content>
+                    </x-bladewind::tab-body>
+                </x-bladewind::tab-group>
             </div>
         </div>
     </div>
