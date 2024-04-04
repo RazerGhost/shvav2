@@ -28,7 +28,7 @@
                         You are a House provider
                     </div>
                 @endif
-                <x-bladewind::tab-group name="free-pics">
+                <x-bladewind::tab-group name="usertypes">
                     <x-slot:headings>
                         <x-bladewind::tab-heading name="students" label="Students" active="true" />
                         <x-bladewind::tab-heading name="providers" label="Providers" />
@@ -95,8 +95,8 @@
                             <x-primary-button class="p-6 text-gray-900 dark:text-gray-100 x-p">
                                 <a href="{{ route('admin.createemployee') }}">Add Employee</a>
                             </x-primary-button>
-                            <div class="p-6">
-                                <x-bladewind::table class="overflow-visible">
+                            <div class="p-6 overflow-scroll">
+                                <x-bladewind::table>
                                     <x-slot name="header">
                                         <th>Voornaam</th>
                                         <th>achternaam</th>
