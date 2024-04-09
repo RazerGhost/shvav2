@@ -84,7 +84,7 @@ class UserController extends Controller
             ]);
         }
 
-        return redirect('/admin')->with('success', 'User saved!');
+        return redirect('/employee')->with('success', 'User saved!');
     }
 
     /**
@@ -156,7 +156,7 @@ class UserController extends Controller
             ]);
         }
 
-        return redirect('/admin')->with('success', 'User saved!');
+        return redirect('/employee')->with('success', 'User saved!');
     }
 
     /**
@@ -165,6 +165,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect('/admin')->with('success', 'User deleted!');
+        return redirect('/employee')->with('success', 'User deleted!');
     }
 }
