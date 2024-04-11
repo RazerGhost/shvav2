@@ -16,7 +16,7 @@
                             <div class="flex flex-col w-1/2 gap-4">
                                 <div class="">
                                     <label for="image" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Afbeelding</label>
-                                    <input type="file" value={{ $studenthome->image }} name="image" id="image" accept="image/png, image/jpeg" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300" required>
+                                    <input type="file" name="image" id="image" accept="image/png, image/jpeg" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300">
                                 </div>
                                 <div class="w-full mb-3">
                                     <img id="image-preview" src="{{ $studenthome->image }}" alt="preview image">

@@ -109,12 +109,16 @@ class StudentHomesController extends Controller
             'state' => 'required|min:5|max:255',
             'zip' => 'required|min:5|max:255',
             'description' => 'required',
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
+            'image' => 'image|mimes:jpg,png,jpeg,gif,svg',
             'provider_id' => 'required|integer',
         ]);
 
-        $path = $request->file('image')->store('public/images');
-        $url = Storage::url($path); // Generate a URL for the stored file
+        if ($request->file('image') == null) {
+            $url = $studenthome->image;
+        } else {
+            $path = $request->file('image')->store('public/images');
+            $url = Storage::url($path); // Generate a URL for the stored file
+        }
 
         $studenthome->update([
             'name' => $request->name,
