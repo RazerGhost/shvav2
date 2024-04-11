@@ -16,6 +16,7 @@
         "storeuser",
         "studenthome",
         "studenthomes",
-        "updateuser"
+        "updateuser",
+        "userimg"
     ]
 }

@@ -27,6 +27,7 @@ class UserProfileController extends Controller
     public function update(Request $request, User $user): RedirectResponse
     {
         $request->validate([
+            'userimg' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // 'image' validation rule requires 'intervention/image' package
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'phone' => 'nullable|string|max:255',
@@ -36,7 +37,11 @@ class UserProfileController extends Controller
             'zip' => 'nullable|string|max:255',
         ]);
 
+        $path = $request->file('userimg')->store('public/images');
+        $url = Storage::url($path); // Generate a URL for the stored file
+
         $user->update([
+            'userimg' => $url,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'phone' => $request->phone,
