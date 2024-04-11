@@ -40,6 +40,8 @@ Route::middleware('auth')->group(function () {
         //Routes for Employees to create/edit Students or Providers/Companies
         Route::get('/createuser', [UserController::class, 'create'])->name('employee.createuser');
         Route::post('/storeuser', [UserController::class, 'store'])->name('employee.storeuser');
+        Route::get('/homes/{user}', [UserController::class, 'showHomes'])->name('employee.showhomes');
+        Route::patch('/homes/assign/{user}', [UserController::class, 'assignHome'])->name('employee.assignhome');
         Route::get('/edituser/{user}', [UserController::class, 'edit'])->name('employee.edituser');
         Route::patch('/updateuser/{user}', [UserController::class, 'update'])->name('employee.updateuser');
         Route::delete('/deleteuser/{user}', [UserController::class, 'destroy'])->name('employee.deleteuser');

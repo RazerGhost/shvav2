@@ -41,6 +41,7 @@
 
         <!-- Page Content -->
         <main>
+            <x-bladewind::notification />
             {{ $slot }}
         </main>
     </div>

@@ -7,6 +7,11 @@
 
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            @if (session('status') === 'no-homes')
+                <script>
+                    showNotification('Geen huizen', 'Er kunnen geen huizen gevonden worden', 'error');
+                </script>
+            @endif
             <div class="overflow-hidden text-white bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                 <x-bladewind::tab-group name="usertypes">
                     <x-slot:headings class="text-black dark:text-white">
@@ -45,7 +50,11 @@
                                             <td>{{ $student->city }}</td>
                                             <td>{{ $student->state }}</td>
                                             <td>{{ $student->zip }}</td>
-                                            <td>{{ $student->homeid }}</td>
+                                            @if ($student->home_id != null)
+                                                <td>{{ $homeTitles[$student->home_id] }}</td>
+                                            @else
+                                                <td><a href="{{ route('employee.showhomes', $student->id) }}">Huis toewijzen</a></td>
+                                            @endif
                                             <td>
                                                 <div class="flex flex-row justify-center flex-1">
                                                     <a href="{{ route('employee.edituser', $student->id) }}"><x-pen></x-pen></a>
