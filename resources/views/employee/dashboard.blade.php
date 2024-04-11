@@ -21,44 +21,37 @@
                             <x-primary-button class="p-6 text-gray-900 x-p dark:text-gray-100">
                                 <a href="{{ route('employee.createuser', ['role' => 2]) }}">Student Toevoegen</a>
                             </x-primary-button>
-                            <div class="p-6 overflow-scroll">
+                            <div class="p-6 ">
                                 <x-bladewind::table>
-                                    <x-slot name="header">
-                                        <th>Voornaam</th>
-                                        <th>achternaam</th>
-                                        <th>Telefoon nummer</th>
-                                        <th>Email</th>
-                                        <th>adres</th>
-                                        <th>stad</th>
-                                        <th>provincie</th>
-                                        <th>postcode</th>
-                                        <th>homeid</th>
-                                        <th>Actions</th>
-                                    </x-slot>
                                     @foreach ($students as $student)
-                                        <tr>
-                                            <td>{{ $student->first_name }}</td>
-                                            <td>{{ $student->last_name }}</td>
-                                            <td>{{ $student->phone }}</td>
-                                            <td>{{ $student->email }}</td>
-                                            <td>{{ $student->address }}</td>
-                                            <td>{{ $student->city }}</td>
-                                            <td>{{ $student->state }}</td>
-                                            <td>{{ $student->zip }}</td>
-                                            <td>{{ $student->homeid }}</td>
-                                            <td>
-                                                <div class="flex flex-row justify-center flex-1">
-                                                    <a href="{{ route('employee.edituser', $student->id) }}"><x-pen></x-pen></a>
-                                                    <form method="POST" action="{{ route('employee.deleteuser', $student->id) }}">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button>
-                                                            <x-trash></x-trash>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                    <div class="grid grid-cols-1 gap-4 justify-evenly sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                                        <div class="flex flex-col justify-center flex-1 w-full bg-white rounded-md shadow-md">
+                                        <div class="w-full p-6 bg-white rounded-md">
+                                            <div>
+                                                <p class="text-gray-600"> Voornaam: {{ $student->first_name }}</p>
+                                                <p class="text-gray-600"> Achrternaam: {{ $student->last_name }}</p>
+                                                <p class="text-gray-600"> Tel nummer: {{ $student->phone }}</p>
+                                                <p class="text-gray-600"> Email: {{ $student->email }}</p>
+                                                <p class="text-gray-600"> Adres: {{ $student->address }}</p>
+                                                <p class="text-gray-600"> Stad: {{ $student->city }}</p>
+                                                <p class="text-gray-600"> Provincie: {{ $student->state }}</p>
+                                                <p class="text-gray-600"> Postcode: {{ $student->zip }}</p>
+                                                <p class="text-gray-600"> Home Id: {{ $student->homeid }}</p>
+                                            </div>
+                                        </div>    
+                                        <div class="flex flex-row justify-between flex-1 p-4">
+                                            <button class="w-full mt-4 text-gray-600">
+                                                <a href="{{ route('employee.edituser', $student->id) }}"><x-pen></x-pen></a>
+                                            </button>
+                                            <form method="POST" action="{{ route('employee.deleteuser', $student->id) }}">
+                                                @csrf
+                                                    @method('DELETE')
+                                                    <button class="w-full mt-4 text-gray-600">
+                                                        <x-trash></x-trash>
+                                                    </button>
+                                            </form>
+                                        </div>
+                                    </div>
                                     @endforeach
                                 </x-bladewind::table>
                             </div>
@@ -67,40 +60,35 @@
                             <x-primary-button class="p-6 text-gray-900 x-p dark:text-gray-100">
                                 <a href="{{ route('employee.createuser', ['role' => 3]) }}">Bedrijf Toevoegen</a>
                             </x-primary-button>
-                            <div class="p-6 overflow-scroll">
+                            <div class="p-6">
                                 <x-bladewind::table>
-                                    <x-slot name="header">
-                                        <th>Bedrijf</th>
-                                        <th>Telefoon nummer</th>
-                                        <th>Email</th>
-                                        <th>adres</th>
-                                        <th>stad</th>
-                                        <th>provincie</th>
-                                        <th>postcode</th>
-                                        <th>Actions</th>
-                                    </x-slot>
                                     @foreach ($providers as $provider)
-                                        <tr>
-                                            <td>{{ $provider->name }}</td>
-                                            <td>{{ $provider->phone }}</td>
-                                            <td>{{ $provider->email }}</td>
-                                            <td>{{ $provider->address }}</td>
-                                            <td>{{ $provider->city }}</td>
-                                            <td>{{ $provider->state }}</td>
-                                            <td>{{ $provider->zip }}</td>
-                                            <td>
-                                                <div class="flex flex-row justify-center flex-1">
-                                                    <a href="{{ route('employee.edituser', $provider->id) }}"><x-pen></x-pen></a>
-                                                    <form method="POST" action="{{ route('employee.deleteuser', $provider->id) }}">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button>
-                                                            <x-trash></x-trash>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                    <div class="grid grid-cols-1 gap-4 justify-evenly sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                                        <div class="flex flex-col justify-center flex-1 w-full bg-white rounded-md shadow-md">
+                                        <div class="w-full p-6 bg-white rounded-md">
+                                            <div>
+                                                <p class="text-gray-600"> Naam: {{ $provider->name }}</p>
+                                                <p class="text-gray-600"> Tel nummer: {{ $provider->phone }}</p>
+                                                <p class="text-gray-600"> Email: {{ $provider->email }}</p>
+                                                <p class="text-gray-600"> Adres: {{ $provider->address }}</p>
+                                                <p class="text-gray-600"> Stad: {{ $provider->city }}</p>
+                                                <p class="text-gray-600"> Provincie: {{ $provider->state }}</p>
+                                                <p class="text-gray-600"> Postcode: {{ $provider->zip }}</p>
+                                            </div>
+                                        </div>    
+                                        <div class="flex flex-row justify-between flex-1 p-4">
+                                            <button class="w-full mt-4 text-gray-600">
+                                                <a href="{{ route('employee.edituser', $provider->id) }}"><x-pen></x-pen></a>
+                                            </button>
+                                            <form method="POST" action="{{ route('employee.deleteuser', $provider->id) }}">
+                                                @csrf
+                                                    @method('DELETE')
+                                                    <button class="w-full mt-4 text-gray-600">
+                                                        <x-trash></x-trash>
+                                                    </button>
+                                            </form>
+                                        </div>
+                                    </div>
                                     @endforeach
                                 </x-bladewind::table>
                             </div>
@@ -110,42 +98,37 @@
                                 <x-primary-button class="p-6 text-gray-900 x-p dark:text-gray-100">
                                     <a href="{{ route('employee.createuser', ['role' => 1]) }}">Werknemer Toevoegen</a>
                                 </x-primary-button>
-                                <div class="p-6 overflow-scroll">
+                                <div class="p-6">
                                     <x-bladewind::table>
-                                        <x-slot name="header">
-                                            <th>Voornaam</th>
-                                            <th>achternaam</th>
-                                            <th>Telefoon nummer</th>
-                                            <th>Email</th>
-                                            <th>adres</th>
-                                            <th>stad</th>
-                                            <th>provincie</th>
-                                            <th>postcode</th>
-                                            <th>Actions</th>
-                                        </x-slot>
                                         @foreach ($employees as $employee)
-                                            <tr>
-                                                <td>{{ $employee->first_name }}</td>
-                                                <td>{{ $employee->last_name }}</td>
-                                                <td>{{ $employee->phone }}</td>
-                                                <td>{{ $employee->email }}</td>
-                                                <td>{{ $employee->address }}</td>
-                                                <td>{{ $employee->city }}</td>
-                                                <td>{{ $employee->state }}</td>
-                                                <td>{{ $employee->zip }}</td>
-                                                <td>
-                                                    <div class="flex flex-row justify-center flex-1">
-                                                        <a href="{{ route('employee.edituser', $employee->id) }}"><x-pen></x-pen></a>
-                                                        <form method="POST" action="{{ route('employee.deleteuser', $employee->id) }}">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button>
-                                                                <x-trash></x-trash>
-                                                            </button>
-                                                        </form>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                        <div class="grid grid-cols-1 gap-4 justify-evenly sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                                            <div class="flex flex-col justify-center flex-1 w-full bg-white rounded-md shadow-md">
+                                            <div class="w-full p-6 bg-white rounded-md">
+                                                <div>
+                                                    <p class="text-gray-600"> Voornaam: {{ $employee->first_name }}</p>
+                                                    <p class="text-gray-600"> achternaam: {{ $employee->last_name }}</p>
+                                                    <p class="text-gray-600"> Telefoon nummer: {{ $employee->phone }}</p>
+                                                    <p class="text-gray-600"> Email: {{ $employee->email }}</p>
+                                                    <p class="text-gray-600"> Stad: {{ $employee->address }}</p>
+                                                    <p class="text-gray-600"> Stad: {{ $employee->city }}</p>
+                                                    <p class="text-gray-600"> Provincie: {{ $employee->state }}</p>
+                                                    <p class="text-gray-600"> Postcode: {{ $employee->zip }}</p>
+                                                </div>
+                                            </div>    
+                                            <div class="flex flex-row justify-between flex-1 p-4">
+                                                <button class="w-full mt-4 text-gray-600">
+                                                    <a href="{{ route('employee.edituser', $employee->id) }}"><x-pen></x-pen></a>
+                                                </button>
+                                                <form method="POST" action="{{ route('employee.deleteuser', $employee->id) }}">
+                                                    @csrf
+                                                        @method('DELETE')
+                                                        <button class="w-full mt-4 text-gray-600">
+                                                            <x-trash></x-trash>
+                                                        </button>
+                                                </form>
+                                            </div>
+                                        </div>
+
                                         @endforeach
                                     </x-bladewind::table>
                                 </div>
