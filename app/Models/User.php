@@ -17,6 +17,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'userimg',
         'first_name', // For Student/Employee/Admin
         'last_name', // For Student/Employee/Admin
         'name', // For Provider

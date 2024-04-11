@@ -46,8 +46,9 @@ class StudentHomesController extends Controller
         }
 
         if (count($providerlist) == 0) {
-            return redirect('/')->with('error', 'No providers found!');
+            return redirect('/')->with('status', 'no-providers');
         }
+
         return view('studenthomes.create')->with('providers', $providerlist);
     }
 
@@ -93,7 +94,7 @@ class StudentHomesController extends Controller
         }
 
         if (count($providerlist) == 0) {
-            return redirect('/')->with('error', 'No providers found!');
+            return redirect('/')->with('status', 'no-providers');
         }
 
         return view('studenthomes.edit', compact('studenthome', 'providerlist'));

@@ -1,4 +1,9 @@
 <section class="mt-6 space-y-6">
+    @if (session('status') === 'profile-updated')
+        <script>
+            showNotification('Info', 'Informatie successvol opgeslagen', 'info');
+        </script>
+    @endif
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
             {{ __('Profile Information') }}
@@ -11,6 +16,16 @@
     <form method="post" action="{{ route('profile.update', $user) }}" class="space-y-4">
         @csrf
         @method('patch')
+
+        <div class="">
+            <label for="image" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Afbeelding</label>
+            <input type="file" value={{ $user->userimg }} name="image" id="image" accept="image/png, image/jpeg" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300" required>
+        </div>
+
+        <div class="w-full mb-3">
+            <img id="image-preview" src="{{ $user->userimg ?? 'https://i.stack.imgur.com/l60Hf.png' }}" alt="preview image">
+        </div>
+
         @if (Auth::user()->role == 3)
             {
             <div class="grid grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-2">
@@ -70,10 +85,20 @@
 
         <div class="flex items-center">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
-
-            @if (session('status') === 'profile-updated')
-                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="ml-4 text-sm text-gray-600 dark:text-gray-400">{{ __('Saved.') }}</p>
-            @endif
         </div>
     </form>
 </section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(e) {
+        $('#image').change(function() {
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                $('#image-preview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(this.files[0]);
+        });
+    });
+</script>

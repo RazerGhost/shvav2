@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "assignhome",
         "createemployee",
         "createhome",
         "createuser",
@@ -15,6 +16,7 @@
         "storeuser",
         "studenthome",
         "studenthomes",
-        "updateuser"
+        "updateuser",
+        "userimg"
     ]
 }

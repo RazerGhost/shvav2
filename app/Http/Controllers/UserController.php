@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\StudentHomes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
@@ -14,13 +15,18 @@ class UserController extends Controller
      */
     public function index()
     {
-
+        $homes = StudentHomes::all();
+        $homeTitles = [];
         $users = User::all();
         $employees = User::where('role', 1)->get();
         $students = User::where('role', 2)->get();
         $providers = User::where('role', 3)->get();
 
-        return view("employee.dashboard", compact("employees", "students", "providers"));
+        foreach ($homes as $home) {
+            $homeTitles[$home->id] = $home->name;
+        }
+
+        return view("employee.dashboard", compact("employees", "students", "providers", "homeTitles"));
     }
 
     /**
@@ -87,12 +93,33 @@ class UserController extends Controller
         return redirect('/employee')->with('success', 'User saved!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(User $user)
+    public function showHomes(User $user, StudentHomes $studentHomes)
     {
-        //
+        $homes = $studentHomes->all();
+        $providersPerHome = [];
+
+        // Iterate over each student home to fetch its associated provider
+        foreach ($homes as $home) {
+            $provider = User::find($home->provider_id);
+            if ($provider) {
+                // Store the provider in the array using the home's ID as the key
+                $providersPerHome[$home->id] = $provider->name; // Assuming provider has a 'name' attribute
+            }
+        }
+
+        if ($homes->count() == 0) {
+            return redirect('/employee')->with('status', 'no-homes',);
+        }
+
+        return view('employee.assignhome', compact('homes', 'providersPerHome', 'user'));
+    }
+
+    public function assignHome(Request $request, User $user)
+    {
+        $user->update([
+            'home_id' => $request->home_id,
+        ]);
+        return redirect('/employee')->with('success', 'Home assigned!');
     }
 
     /**
@@ -100,7 +127,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('employee.edit')->with('user', $user);
+        return view('employee.edit', compact('user'));
     }
 
     /**
