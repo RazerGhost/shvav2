@@ -4,11 +4,11 @@
             {{ __('Profile Information') }}
         </h2>
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __("Update your account's profile information and email address.") }}
+            {{ __("Update your account's profile information.") }}
         </p>
     </header>
 
-    <form method="post" action="{{ route('profile.update') }}" class="space-y-4">
+    <form method="post" action="{{ route('profile.update', $user) }}" class="space-y-4">
         @csrf
         @method('patch')
         @if (Auth::user()->role == 3)
@@ -35,12 +35,6 @@
                 </div>
             </div>
         @endif
-
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" name="email" type="email" class="block w-full mt-1" :value="old('email', $user->email)" required autocomplete="email" />
-            <x-input-error class="mt-2" :messages="$errors->get('email')" />
-        </div>
 
         <div>
             <x-input-label for="phone" :value="__('Telefoon nummer')" />

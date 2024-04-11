@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('zip')->nullable();
-            $table->string('password');
+            $table->string('password')->default('');
             $table->integer('role')->default(2);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
